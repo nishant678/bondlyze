@@ -1,6 +1,8 @@
 import 'package:bondlyze/config/routes/routes_name.dart';
-import 'package:bondlyze/view/login/login_screen.dart';
-import 'package:bondlyze/view/splash/splash_screen.dart';
+import 'package:bondlyze/view/bottom_bar.dart';
+import 'package:bondlyze/view/home_screen.dart';
+import 'package:bondlyze/view/login_screen.dart';
+import 'package:bondlyze/view/splash_screen.dart';
 import 'package:flutter/material.dart';
 
 class Routes {
@@ -10,7 +12,10 @@ class Routes {
         return MaterialPageRoute(builder: (BuildContext context) => const SplashScreen());
 
       case RoutesName.home:
-        // return MaterialPageRoute(builder: (BuildContext context) => const MoviesScreen());
+        return MaterialPageRoute(builder: (BuildContext context) => const HomeScreen());
+
+      case RoutesName.bottom_bar:
+        return MaterialPageRoute(builder: (BuildContext context) => const BottomBarScreen());
 
       case RoutesName.login:
         return MaterialPageRoute(builder: (BuildContext context) => const LoginScreen());

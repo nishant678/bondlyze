@@ -6,7 +6,7 @@ class SplashService {
   void isLogin(BuildContext context){
     Timer(
         const Duration(seconds: 2),
-        () => Navigator.pushNamedAndRemoveUntil(context, RoutesName.login, (route) => false),
+        () => Navigator.pushNamedAndRemoveUntil(context, RoutesName.bottom_bar, (route) => false),
       );
   }
 }

@@ -36,18 +36,11 @@ class _LoginScreenState extends State<LoginScreen> {
                         controller: passwordController,
                       ),
                       const SizedBox(height: 20),
-                      // if (state is LoginLoading)
-                      //   const CircularProgressIndicator()
-                      // else
+                      
                         CustomButton(
                           text: "Log In",
                           onPressed: () {
-                            // context.read<LoginBloc>().add(
-                            //   LoginSubmitted(
-                            //     email: emailController.text,
-                            //     password: passwordController.text,
-                            //   ),
-                            // );
+                             
                           },
                         ),
                       const SizedBox(height: 20),
