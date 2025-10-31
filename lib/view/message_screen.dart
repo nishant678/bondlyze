@@ -83,7 +83,13 @@ class _MessageScreenState extends State<MessageScreen> {
           ),
           IconButton(
             icon: const Icon(Icons.videocam, color: Colors.black),
-            onPressed: () {},
+            onPressed: () {
+              Navigator.pushNamed(
+                context,
+                RoutesName.videoCall,
+                arguments: {'contactName': widget.contactName},
+              );
+            },
           ),
           SizedBox(width: context.rw(8)),
         ],

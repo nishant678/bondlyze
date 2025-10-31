@@ -5,6 +5,7 @@ import 'package:bondlyze/view/home_screen.dart';
 import 'package:bondlyze/view/login_screen.dart';
 import 'package:bondlyze/view/message_screen.dart';
 import 'package:bondlyze/view/splash_screen.dart';
+import 'package:bondlyze/view/video_call_screen.dart';
 import 'package:flutter/material.dart';
 
 class Routes {
@@ -34,6 +35,13 @@ class Routes {
         final contactName = args?['contactName'] as String? ?? 'Charlotte';
         return MaterialPageRoute(
           builder: (BuildContext context) => AudioCallScreen(contactName: contactName),
+        );
+
+      case RoutesName.videoCall:
+        final args = settings.arguments as Map<String, dynamic>?;
+        final contactName = args?['contactName'] as String? ?? 'Charlotte';
+        return MaterialPageRoute(
+          builder: (BuildContext context) => VideoCallScreen(contactName: contactName),
         );
 
       default:
