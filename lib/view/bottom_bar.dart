@@ -1,3 +1,4 @@
+import 'package:bondlyze/view/matches_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:bondlyze/view/home_screen.dart';
 import 'package:bondlyze/view/chat_screen.dart';
@@ -15,6 +16,7 @@ class _BottomBarScreenState extends State<BottomBarScreen> {
 
   final List<Widget> _screens = [
     const HomeScreen(),
+    const MatchesScreen(),
     const ChatScreen(),
     const ProfileScreen(),
   ];
@@ -35,6 +37,10 @@ class _BottomBarScreenState extends State<BottomBarScreen> {
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
             label: 'Home',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.chat),
+            label: 'Matches',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.chat),

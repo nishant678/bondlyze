@@ -17,9 +17,9 @@ class _SplashScreenState extends State<SplashScreen> {
   }
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(
+    return Scaffold(
           body: Container(
-            decoration: BoxDecoration(gradient: AppColors.appGradient),
+            decoration: BoxDecoration(color: AppColors.primaryColor,),
             child: Center(
               child: Image.asset("assets/img/app_logo.png", height: 150),
             ),
