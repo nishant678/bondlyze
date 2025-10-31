@@ -18,11 +18,28 @@ class _VideoCallScreenState extends State<VideoCallScreen> {
   bool _isSpeakerOn = false;
   bool _isVideoOn = true;
   bool _isMuted = false;
+  
+  // Position for Picture-in-Picture box
+  Offset _pipPosition = Offset.zero;
+  bool _isInitialPositionSet = false;
 
   @override
   void initState() {
     super.initState();
     _startCallTimer();
+  }
+  
+  void _updatePipPosition(BuildContext context) {
+    if (!_isInitialPositionSet) {
+      final screenWidth = MediaQuery.of(context).size.width;
+      final screenHeight = MediaQuery.of(context).size.height;
+      // Set initial position (bottom-right)
+      _pipPosition = Offset(
+        screenWidth - context.rw(136), // width (120) + right margin (16)
+        screenHeight - context.rh(360) - MediaQuery.of(context).padding.bottom, // height (160) + bottom offset (200) + safe area
+      );
+      _isInitialPositionSet = true;
+    }
   }
 
   void _startCallTimer() {
@@ -47,6 +64,20 @@ class _VideoCallScreenState extends State<VideoCallScreen> {
 
   @override
   Widget build(BuildContext context) {
+    _updatePipPosition(context);
+    final screenWidth = MediaQuery.of(context).size.width;
+    final screenHeight = MediaQuery.of(context).size.height;
+    final safeAreaBottom = MediaQuery.of(context).padding.bottom;
+    final pipWidth = context.rw(120);
+    final pipHeight = context.rh(160);
+    
+    // Allow box to move anywhere on screen, only constrained by screen boundaries
+    // Exclude only the very bottom control button area (not the call info area)
+    final bottomControlButtonArea = context.rh(80) + safeAreaBottom; // Space for bottom control buttons only
+    final maxLeft = screenWidth - pipWidth;
+    final maxTop = screenHeight - pipHeight - bottomControlButtonArea;
+    final minTop = 0.0; // Allow from top of screen including safe area
+    
     return Scaffold(
       backgroundColor: Colors.black,
       body: Stack(
@@ -54,11 +85,21 @@ class _VideoCallScreenState extends State<VideoCallScreen> {
           // Main video feed (full screen)
           _MainVideoFeed(contactName: widget.contactName),
           
-          // Picture-in-Picture video feed (bottom-right)
+          // Picture-in-Picture video feed (draggable)
           Positioned(
-            bottom: context.rh(200),
-            right: context.rw(16),
-            child: _PictureInPictureFeed(),
+            left: _pipPosition.dx.clamp(0.0, maxLeft),
+            top: _pipPosition.dy.clamp(minTop, maxTop),
+            child: GestureDetector(
+              onPanUpdate: (details) {
+                setState(() {
+                  _pipPosition = Offset(
+                    (_pipPosition.dx + details.delta.dx).clamp(0.0, maxLeft),
+                    (_pipPosition.dy + details.delta.dy).clamp(minTop, maxTop),
+                  );
+                });
+              },
+              child: _PictureInPictureFeed(),
+            ),
           ),
           
           // Call information (bottom-left)
