@@ -1,4 +1,5 @@
 import 'package:bondlyze/config/routes/routes_name.dart';
+import 'package:bondlyze/view/audio_call_screen.dart';
 import 'package:bondlyze/view/bottom_bar.dart';
 import 'package:bondlyze/view/home_screen.dart';
 import 'package:bondlyze/view/login_screen.dart';
@@ -26,6 +27,13 @@ class Routes {
         final contactName = args?['contactName'] as String? ?? 'Charlotte';
         return MaterialPageRoute(
           builder: (BuildContext context) => MessageScreen(contactName: contactName),
+        );
+
+      case RoutesName.audioCall:
+        final args = settings.arguments as Map<String, dynamic>?;
+        final contactName = args?['contactName'] as String? ?? 'Charlotte';
+        return MaterialPageRoute(
+          builder: (BuildContext context) => AudioCallScreen(contactName: contactName),
         );
 
       default:

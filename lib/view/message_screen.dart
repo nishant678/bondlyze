@@ -1,3 +1,4 @@
+import 'package:bondlyze/config/routes/routes_name.dart';
 import 'package:bondlyze/model/chat_message_model.dart';
 import 'package:flutter/material.dart';
 import 'package:bondlyze/utils/responsive.dart';
@@ -72,7 +73,13 @@ class _MessageScreenState extends State<MessageScreen> {
         actions: [
           IconButton(
             icon: const Icon(Icons.phone, color: Colors.black),
-            onPressed: () {},
+            onPressed: () {
+              Navigator.pushNamed(
+                context,
+                RoutesName.audioCall,
+                arguments: {'contactName': widget.contactName},
+              );
+            },
           ),
           IconButton(
             icon: const Icon(Icons.videocam, color: Colors.black),

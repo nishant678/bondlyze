@@ -11,6 +11,7 @@ class RoutesName {
   static const String home = 'home_screen' ;
   static const String bottom_bar = 'bottom_bar' ;
   static const String message = 'message_screen' ;
+  static const String audioCall = 'audio_call_screen' ;
 
 
 }
