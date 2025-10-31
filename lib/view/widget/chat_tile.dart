@@ -1,3 +1,4 @@
+import 'package:bondlyze/config/routes/routes_name.dart';
 import 'package:bondlyze/model/chat_item_model.dart';
 import 'package:flutter/material.dart';
 
@@ -66,7 +67,13 @@ class ChatTile extends StatelessWidget {
             ),
         ],
       ),
-      onTap: () {},
+      onTap: () {
+        Navigator.pushNamed(
+          context,
+          RoutesName.message,
+          arguments: {'contactName': chat.name},
+        );
+      },
     );
   }
 }
