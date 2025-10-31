@@ -12,7 +12,7 @@ class ChatTile extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     return ListTile(
-      contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 6),
+      contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 3),
       leading: Stack(
         children: [
           CircleAvatar(

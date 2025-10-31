@@ -80,7 +80,7 @@ class _HomeScreenState extends State<HomeScreen> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Padding(
-            padding: const EdgeInsets.fromLTRB(16, 12, 16, 6),
+            padding: const EdgeInsets.fromLTRB(16, 12, 16, 10),
             child: Row(
               children: [
                 Container(
@@ -140,7 +140,7 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
           ),
           SizedBox(
-            height: 86,
+            height: 43.h,
             child: ListView.separated(
               padding: const EdgeInsets.symmetric(horizontal: 12),
               scrollDirection: Axis.horizontal,
@@ -159,7 +159,7 @@ class _HomeScreenState extends State<HomeScreen> {
           Expanded(
             child: ListView.separated(
               itemCount: _chats.length,
-              separatorBuilder: (_, __) => const Divider(height: 1, indent: 84),
+              separatorBuilder: (_, __) => SizedBox(),
               itemBuilder: (context, index) {
                 final chat = _chats[index];
                 return ChatTile(

@@ -7,7 +7,7 @@ class ActiveAvatar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final initials = name.isNotEmpty ? name[0].toUpperCase() : '?';
+    final initials = name.isNotEmpty ? name[0].toUpperCase() : '';
     return Column(
       children: [
         Stack(
@@ -30,15 +30,6 @@ class ActiveAvatar extends StatelessWidget {
               ),
             ),
           ],
-        ),
-        const SizedBox(height: 8),
-        Container(
-          width: 56,
-          height: 4,
-          decoration: BoxDecoration(
-            color: Colors.deepPurple,
-            borderRadius: BorderRadius.circular(2),
-          ),
         ),
       ],
     );
